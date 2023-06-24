@@ -18,6 +18,7 @@ import kid from "../../assets/images/kid.jpg";
 
 export default function CourseCard({ course }) {
 
+  console.log(course)
   const loginInfo = useSelector(state => state.login);
 
   const navigate = useNavigate();

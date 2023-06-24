@@ -1,11 +1,13 @@
-import {Box, Button, Heading, Image, Text} from "@chakra-ui/react";
+import { Box, Button, Heading, Image, Text } from "@chakra-ui/react";
 import colors from "../assets/colors";
-import {ArrowForwardIcon} from "@chakra-ui/icons";
+import { ArrowForwardIcon } from "@chakra-ui/icons";
 import Kid from "../assets/images/kid.jpg";
 import Kid2 from "../assets/images/kid2.jpg";
 import Kid3 from "../assets/images/b2ap3_large_make_quran_learning_fun_for_kids.jpg";
+import { useNavigate } from "react-router-dom";
 
 export const HeroSection = () => {
+    const navigate = useNavigate();
     return (
         <Box
             position={"relative"}
@@ -45,7 +47,9 @@ export const HeroSection = () => {
                         transition="all 0.2s ease-in-out"
                         _hover={{
                             paddingX: "20px",
-                        }}>
+                        }}
+                        onClick={() => navigate("/login")}
+                    >
                         Get Started
                     </Button>
                 </Box>

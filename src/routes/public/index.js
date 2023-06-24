@@ -1,7 +1,9 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
+import AboutUs from "../../pages/public/AboutUs";
 import Courses from "../../pages/public/Courses";
 import Home from "../../pages/public/Home";
 import { Login } from "../../pages/public/Login";
@@ -20,7 +22,9 @@ export default function PublicRoutes() {
         <Route path="/signup" element={<Registration />} />
         <Route path="/tutor/signup" element={<TutorRegistration />} />
         <Route path="/courses" element={<Courses />} />
+        <Route path="/about-us" element={<AboutUs />} />
       </Routes>
+      <Footer />
     </Box>
   );
 }

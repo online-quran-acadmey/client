@@ -50,8 +50,8 @@ export default function Navbar() {
       alignItems="center"
       h="70px"
       borderBottom="1px"
-      borderBottomColor={colors.primaryLight}
-      boxShadow={"lg"}
+      borderBottomColor='gray.300'
+      // boxShadow={"lg"}
       zIndex={100}>
       <Heading
         fontSize={{ base: "md", md: "lg" }}

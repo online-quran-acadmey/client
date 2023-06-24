@@ -28,13 +28,52 @@ export const courseApi = createApi({
         url: `/create`,
         method: "POST",
         body: body,
-      })
+      }),
+      invalidatesTags: ["Course"],
     }),
 
     getAllCourseByTutor: builder.query({
-      query: (id) => `/getAllByTutor`,
+      query: () => `/getAllByTutor`,
+      providesTags: ["Course"],
     }),
+
+
+    getAllEnrolledCourse: builder.query({
+      query: () => '/enrolledCourses'
+    }),
+
+    updateCourse: builder.mutation({
+      query: (data) => ({
+        url: `/update/${data.id}`,
+        method: 'PUT',
+        body: data.body
+      })
+    }),
+
+    deleteCourse: builder.mutation({
+      query: (id) => ({
+        url: `/delete/${id}`,
+        method: 'DELETE'
+      })
+    }),
+
+    requestEnroll: builder.mutation({
+      query: (body) => ({
+        url: `/request`,
+        method: 'POST',
+        body
+      })
+    })
+
   }),
 });
 
-export const { useGetAllCourseQuery, useCreateCourseMutation, useGetAllCourseByTutorQuery } = courseApi;
+export const {
+  useGetAllCourseQuery,
+  useCreateCourseMutation,
+  useGetAllCourseByTutorQuery,
+  useGetAllEnrolledCourseQuery,
+  useDeleteCourseMutation,
+  useUpdateCourseMutation,
+  useRequestEnrollMutation
+} = courseApi;

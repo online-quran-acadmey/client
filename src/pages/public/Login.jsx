@@ -10,7 +10,7 @@ export const Login = () => {
       w="100%"
       h="100vh">
       <Box
-        w="35%"
+        w={{ base: "100%", md: "50%", lg: "35%" }}
         boxShadow="dark-lg"
         p={5}
         borderRadius={"md"}

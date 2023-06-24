@@ -18,7 +18,7 @@ import {
 import React, { useEffect } from "react";
 import CreateCourseModal from "../../../components/Modal/CreateCourseModal";
 import { useGetAllCourseByTutorQuery } from "../../../services/course.service";
-import AllCourses from "../../../components/Courses/AllCourses";
+import TutorCoursesCard from "../../../components/Courses/TutorCoursesCard";
 
 
 
@@ -27,7 +27,7 @@ export default function MyCourses() {
 
   const [courses, setCourses] = React.useState([]);
 
-  const { data, isSuccess, isLoading, isError, error } = useGetAllCourseByTutorQuery();
+  const { data, isSuccess } = useGetAllCourseByTutorQuery();
 
   useEffect(() => {
     if (isSuccess) {
@@ -49,8 +49,11 @@ export default function MyCourses() {
           <Heading w='80%' textAlign={"center"} mb={3}>Courses List</Heading>
         </Box>
         <Divider my={3} />
-
-        <AllCourses courses={courses} />
+        <Box display={"grid"} gridTemplateColumns={"repeat(3, 1fr)"} gap={4}>
+          {courses.map((course) => (
+            <TutorCoursesCard key={course.id} course={course} />
+          ))}
+        </Box>
       </Box>
       <Box
         w={"30%"}

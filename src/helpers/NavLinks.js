@@ -49,5 +49,9 @@ export const tutorLinks = [
     id: 2,
     text: "My Courses",
     link: "/my-courses",
+  }, {
+    id: 3,
+    text: "Requests",
+    link: "/request",
   },
 ];
