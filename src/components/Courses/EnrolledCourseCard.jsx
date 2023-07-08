@@ -5,7 +5,7 @@ function EnrolledCourseCard({ course }) {
 
     return (
         <Box borderWidth="1px" borderRadius="md" borderColor="gray.200" overflow="hidden">
-            <Image src={kid} alt={name} objectFit="cover" boxSize="280px" />
+            <Image src={kid} alt={name} objectFit="cover" boxSize={{ base: "400px", md: "280px" }} />
             <Box p={4}>
                 <Heading as="h3" size="lg" mb={2}>
                     {name}

@@ -18,6 +18,8 @@ import { HamburgerIcon, Search2Icon } from "@chakra-ui/icons";
 import { useSelector } from "react-redux";
 import { pubicLink, tutorLinks, userLinks } from "../helpers/NavLinks";
 import ProfileMenu from "./Menu/ProfileMenu";
+import NavbarDrawer from "./NabarDrawer";
+import cookie from "react-cookies";
 
 export default function Navbar() {
   const loginInfo = useSelector((state) => state.login);
@@ -37,6 +39,14 @@ export default function Navbar() {
     } else setLinks(pubicLink);
 
   }, [loginInfo.login]);
+
+
+  const handelLogout = () => {
+    cookie.remove("token");
+    cookie.remove("user");
+    cookie.remove("tutor");
+    window.location.href = "/";
+  };
 
   return (
     <Box
@@ -123,17 +133,19 @@ export default function Navbar() {
               <Search2Icon />
             </InputRightElement>
           </InputGroup>
-          <ProfileMenu>
+          <ProfileMenu handelLogout={handelLogout}>
             <Avatar name={`${user.firstName} ${user.lastName}`} />
           </ProfileMenu>
         </Box>
       )}
       <Box display={{ base: "flex", md: "none" }}>
-        <IconButton
-          icon={<HamburgerIcon />}
-          aries-label="menu"
-          colorScheme="red"
-        />
+        <NavbarDrawer handelLogout={handelLogout} links={links} login={loginInfo.login} user={user}>
+          <IconButton
+            icon={<HamburgerIcon />}
+            aries-label="menu"
+            colorScheme="red"
+          />
+        </NavbarDrawer>
       </Box>
     </Box>
   );

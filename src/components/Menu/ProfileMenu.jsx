@@ -1,14 +1,8 @@
 import { Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import React from "react";
-import cookie from "react-cookies";
 
-export default function ProfileMenu({ children }) {
-  const handelLogout = () => {
-    cookie.remove("token");
-    cookie.remove("user");
-    cookie.remove("tutor");
-    window.location.href = "/";
-  };
+
+export default function ProfileMenu({ children, handelLogout }) {
 
   return (
     <Menu>

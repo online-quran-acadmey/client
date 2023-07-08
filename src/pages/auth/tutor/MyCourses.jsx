@@ -41,25 +41,26 @@ export default function MyCourses() {
       w="100%"
       display={"flex"}
       justifyContent={"center"}
+      flexDir={{ base: "column", md: "row" }}
       mt={"24"}
       gap={6}>
-      <Box w={"60%"}>
+      <Box w={{ base: "100%", md: "60%" }}>
         <Box display={'flex'} alignItems={'center'}>
-          <CreateCourseModal><Button colorScheme='blue' variant='outline'>Create New Course</Button></CreateCourseModal>
-          <Heading w='80%' textAlign={"center"} mb={3}>Courses List</Heading>
+          <CreateCourseModal><Button size={{ base: "sm", md: "md" }} colorScheme='blue' variant='outline'>Create New Course</Button></CreateCourseModal>
+          <Heading w='80%' fontSize={{ base: "md", md: "lg" }} textAlign={"center"} mb={3}>Courses List</Heading>
         </Box>
         <Divider my={3} />
-        <Box display={"grid"} gridTemplateColumns={"repeat(3, 1fr)"} gap={4}>
+        <Box display={"grid"} gridTemplateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" }} gap={4}>
           {courses.map((course) => (
             <TutorCoursesCard key={course.id} course={course} />
           ))}
         </Box>
       </Box>
       <Box
-        w={"30%"}
+        w={{ base: "100%", md: "30%" }}
         mt={16}
         display="flex"
-        alignItems={"flex-end"}
+        alignItems={{ base: "center", md: "flex-end" }}
         flexDir="column"
         gap={4}>
         <InputGroup w="70%">
@@ -68,10 +69,10 @@ export default function MyCourses() {
             <Icon as={BiSearch} />
           </InputRightAddon>
         </InputGroup>
-        <Box w='100%' display={'flex'} justifyContent='center' flexDir='column' alignItems={'flex-end'}>
+        <Box w='100%' display={'flex'} justifyContent='center' flexDir='column' alignItems={{ base: "center", md: 'flex-end' }}>
           <Heading w={'80%'} alignSelf='start' textAlign={'center'} fontSize='md'>Fillers</Heading>
           <Divider w={'65%'} textAlign={'center'} fontSize='md' my={1} />
-          <Heading w={'60%'} textAlign={'center'} fontSize='sm' my={1} >Price Range</Heading>
+          <Heading w={'60%'} textAlign={{ base: 'start', md: 'center' }} fontSize='sm' my={1} >Price Range</Heading>
           <RadioGroup w={'65%'} textAlign={'center'} fontSize='md' my={1} defaultValue="0">
             <VStack spacing={2} align="left" divider={<Divider />}>
               <Radio value="0">0</Radio>

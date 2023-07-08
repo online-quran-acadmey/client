@@ -39,22 +39,25 @@ export const courseApi = createApi({
 
 
     getAllEnrolledCourse: builder.query({
-      query: () => '/enrolledCourses'
+      query: () => '/enrolledCourses',
+      providesTags: ["Course"],
     }),
 
     updateCourse: builder.mutation({
-      query: (data) => ({
-        url: `/update/${data.id}`,
+      query: ({ id, body }) => ({
+        url: `/update/${id}`,
         method: 'PUT',
-        body: data.body
-      })
+        body
+      }),
+      invalidatesTags: ["Course"],
     }),
 
     deleteCourse: builder.mutation({
       query: (id) => ({
         url: `/delete/${id}`,
         method: 'DELETE'
-      })
+      }),
+      invalidatesTags: ["Course"],
     }),
 
     requestEnroll: builder.mutation({
@@ -63,6 +66,34 @@ export const courseApi = createApi({
         method: 'POST',
         body
       })
+    }),
+
+    acceptRequest: builder.mutation({
+      query: (body) => ({
+        url: `/enrolled`,
+        method: 'POST',
+        body
+      }),
+      invalidatesTags: ["Course"],
+    }),
+
+    searchCourse: builder.query({
+      query: (name) => `/?name=${name}`,
+    }),
+
+    totalCourseOfTutor: builder.query({
+      query: () => `/tutor-courses`,
+      providesTags: ["Course"],
+    }),
+
+    totalEnrolledStudents: builder.query({
+      query: () => '/total-enrolled',
+      providesTags: ["Course"],
+    }),
+
+    totalStudentRecord: builder.query({
+      query: () => '/total',
+      providesTags: ["Course"],
     })
 
   }),
@@ -75,5 +106,10 @@ export const {
   useGetAllEnrolledCourseQuery,
   useDeleteCourseMutation,
   useUpdateCourseMutation,
-  useRequestEnrollMutation
+  useRequestEnrollMutation,
+  useAcceptRequestMutation,
+  useLazySearchCourseQuery,
+  useTotalCourseOfTutorQuery,
+  useTotalEnrolledStudentsQuery,
+  useTotalStudentRecordQuery,
 } = courseApi;

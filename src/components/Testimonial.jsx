@@ -15,19 +15,19 @@ function TestimonialsSection() {
             review: "I enrolled my son in Learn Quran Online and I'm so happy with the progress he's made. The tutors are patient and knowledgeable and the one-on-one classes are really effective.",
         },
         {
-            name: "Aisha Malik",
+            name: "Aishxa Malik",
             image: "https://bit.ly/3A5dHuN",
             review: "I wanted to learn Quran online but I was hesitant at first. Learn Quran Online made the process so easy and their tutors are amazing. I highly recommend their services.",
         }, {
-            name: "Aisha Malik",
+            name: "Aishca Malik",
             image: "https://bit.ly/3A5dHuN",
             review: "I wanted to learn Quran online but I was hesitant at first. Learn Quran Online made the process so easy and their tutors are amazing. I highly recommend their services.",
         }, {
-            name: "Aisha Malik",
+            name: "Aishea Malik",
             image: "https://bit.ly/3A5dHuN",
             review: "I wanted to learn Quran online but I was hesitant at first. Learn Quran Online made the process so easy and their tutors are amazing. I highly recommend their services.",
         }, {
-            name: "Aisha Malik",
+            name: "Aishsa Malik",
             image: "https://bit.ly/3A5dHuN",
             review: "I wanted to learn Quran online but I was hesitant at first. Learn Quran Online made the process so easy and their tutors are amazing. I highly recommend their services.",
         },
@@ -58,8 +58,8 @@ function TestimonialsSection() {
                 }}
             >
                 {testimonials.map((testimonial) => (
-                    <Flex w={'40%'} bg={colors.primary} color={colors.secondaryLight} p={8} borderRadius={8} key={testimonial.name} justify="space-between" alignItems="center">
-                        <Image src={testimonial.image} alt={testimonial.name} objectFit="cover" borderRadius="full" boxSize={{ base: "80px", lg: "100px" }} mr={{ lg: 8 }} />
+                    <Flex direction={{ base: "column", md: "row" }} w={{ base: '100%', md: '40%' }} bg={colors.primary} color={colors.secondaryLight} p={{ base: 3, md: 8 }} borderRadius={8} key={testimonial.name} justify={{ base: 'center', md: "space-between" }} alignItems="center">
+                        <Image src={testimonial.image} alt={testimonial.name} objectFit="cover" borderRadius={{ base: 'md', md: "full" }} boxSize={{ base: "400px", lg: "100px" }} mr={{ lg: 8 }} />
                         <Box>
                             <Text color={colors.secondary} fontSize="2xl" mb={2}>
                                 {testimonial.name}
@@ -69,7 +69,7 @@ function TestimonialsSection() {
                     </Flex>
                 ))}
             </Box>
-        </Box>
+        </Box >
     );
 }
 

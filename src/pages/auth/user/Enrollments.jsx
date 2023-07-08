@@ -40,7 +40,7 @@ export default function Enrollments() {
     mt={"24"}
     gap={6}
   >
-    <Box w={"60%"}>
+    <Box w={{ base: '80%', md: "60%" }}>
       <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'} mb={3}>
         <Heading textAlign={"center"} mb={3}>
           Enrollment List
@@ -48,7 +48,7 @@ export default function Enrollments() {
         <IconButton icon={<RepeatIcon />} colorScheme={"blue"} variant={"outline"} mb={3} />
       </Box>
       <Divider my={3} />
-      <Box display={"grid"} gridTemplateColumns={"repeat(3, 1fr)"} gap={4}>
+      <Box display={"grid"} gridTemplateColumns={{ base: 'repeat(1, 1fr)', md: "repeat(3, 1fr)" }} gap={4}>
         {courses?.map((course) => (
           <EnrolledCourseCard key={course.id} course={course} />
         ))}

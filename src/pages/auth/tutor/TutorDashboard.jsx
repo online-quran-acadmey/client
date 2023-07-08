@@ -1,10 +1,27 @@
 import { Box, Center, Flex, Heading, IconButton, SimpleGrid, Stat, StatHelpText, StatLabel, StatNumber, Text } from "@chakra-ui/react";
 import { AddIcon, CalendarIcon, CheckIcon, ChevronDownIcon, InfoIcon } from "@chakra-ui/icons";
 import TutorNotification from "../../../components/TutorNotification";
+import { useTotalCourseOfTutorQuery, useTotalEnrolledStudentsQuery } from "../../../services/course.service";
+import { useEffect, useState } from "react";
 
 const TutorDashboard = () => {
 
+    const [totalCourses, setTotalCourses] = useState(0);
 
+    const [totalStudent, setTotalStudent] = useState(0)
+
+    const { data, isSuccess, isLoading } = useTotalCourseOfTutorQuery();
+
+    const { data: enrolledStudentData, isSuccess: isSuccessStudent } = useTotalEnrolledStudentsQuery();
+
+    useEffect(() => {
+        if (isSuccess) {
+            setTotalCourses(data.courses);
+        }
+        if (isSuccessStudent) {
+            setTotalStudent(enrolledStudentData.enrolledStudentTotal);
+        }
+    }, [isSuccess, isSuccessStudent, data, enrolledStudentData]);
 
     return (
         <Box maxW="1200px" mx="auto" mt="40px" p="20px">
@@ -23,13 +40,13 @@ const TutorDashboard = () => {
                     <SimpleGrid columns={2} spacing="20px">
                         <Stat>
                             <StatLabel>Total Courses</StatLabel>
-                            <StatNumber>15</StatNumber>
-                            <StatHelpText>4 new courses this month</StatHelpText>
+                            <StatNumber>{totalCourses}</StatNumber>
+                            <StatHelpText>{totalCourses} new courses this month</StatHelpText>
                         </Stat>
                         <Stat>
                             <StatLabel>Enrolled Students</StatLabel>
-                            <StatNumber>250</StatNumber>
-                            <StatHelpText>50 new students this month</StatHelpText>
+                            <StatNumber>{totalStudent}</StatNumber>
+                            <StatHelpText>{totalCourses} new students this month</StatHelpText>
                         </Stat>
                     </SimpleGrid>
                 </Box>
@@ -42,7 +59,7 @@ const TutorDashboard = () => {
             </SimpleGrid>
             <Box mt="40px">
                 <Heading as="h3" size="md" mb="10px">Recent Activity</Heading>
-                <SimpleGrid columns={3} spacing="20px">
+                <SimpleGrid columns={{ base: 2, md: 3 }} spacing="20px">
                     <Box borderWidth="1px" borderRadius="lg" p="20px">
                         <Text mb="10px">New course added:</Text>
                         <Text fontWeight="bold">Quran Memorization</Text>

@@ -16,6 +16,7 @@ export default function TutorRoutes() {
         <Route path="/" element={<TutorDashboard />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/my-courses" element={<MyCourses />} />
+
         <Route path="/request" element={<RequestShowPage />} />
       </Routes>
       <Footer />
